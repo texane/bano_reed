@@ -1,0 +1,62 @@
+[ general ]
+
+. nrf905 transceiver
+. encryption (tea)
+. reed sensor
+. power switch
+. status led, uc driven
+. ui, refer to smoke detector project
+
+
+
+[ mini pro ]
+
+ptr8000 interface
+led pin
+programming jumper -> switch
+
+
+[ ideas ]
+-> key to enable alarm
+-> voltage measure, below 2.4 is not ok. use 4x diodes in series
+-> base station in an usb dongle
+
+
+[ on battery current consumption ]
+
+[[ ptr8000 not configured, arduino led always enabled ]]
+
+door closed: 1.9 mA
+door opened, status led disabled: 2.20 mA
+door opened, status led enabled: 3.2 mA
+
+[[ ptr8000 not configured, arduino leds removed ]]
+
+door closed: 560 uA
+door opened, status led disabled: 970 uA
+door opened, status led enabled: 1.8 mA
+
+[[ ptr8000 configured, arduino leds removed ]]
+
+door closed: 1.134 mA
+door opened, status led disabled: 1.15 mA
+door opened, status led enabled: 1.97 mA
+
+
+[ TODO ]
+
+. mesure current consumption using the battery switch. deduce
+lifetime.
+
+. implement a NRF905 snrf bridge
+ -> 3.3v minipro based
+
+. use bano framework, transmit only
+in a first time, do not take the whole framework as it is not
+ported for nrf905. use only the interrupt on pin change, low
+power consumption logic to wake up on reed change
+
+. organize the whole project
+-> call it bano ?
+-> bano nodes should each have their own repo. a sdk should
+be available. the whole thing must be self contained
