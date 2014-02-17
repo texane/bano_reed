@@ -133,6 +133,8 @@ int main(void)
 
   info.wake_mask = BANO_WAKE_PCINT;
   info.pcint_mask = 1UL << 19UL;
+
+  info.disable_mask = BANO_DISABLE_ALL;
 #if (CONFIG_UART == 1)
   info.disable_mask &= ~BANO_DISABLE_USART;
 #endif
