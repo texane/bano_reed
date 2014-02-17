@@ -4,6 +4,8 @@
 
 /* bano */
 
+#define BANO_CONFIG_NRF905 1
+
 #include "bano/src/common/bano_common.h"
 #include "bano/src/node/bano_node.h"
 #include "bano/src/node/bano_node.c"
@@ -14,9 +16,6 @@
 #define CONFIG_UART 1
 
 #if (CONFIG_UART == 1)
-#ifndef CLK_PRESCAL
-#define CLK_PRESCAL (256UL)
-#endif
 #include "nrf/src/uart.c"
 #endif
 
