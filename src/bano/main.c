@@ -4,8 +4,6 @@
 
 /* bano */
 
-#define BANO_CONFIG_NRF905 1
-
 #include "bano/src/common/bano_common.h"
 #include "bano/src/node/bano_node.h"
 #include "bano/src/node/bano_node.c"
