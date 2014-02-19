@@ -11,8 +11,7 @@
 
 /* uart */
 
-#define CONFIG_UART 1
-
+#define CONFIG_UART 0
 #if (CONFIG_UART == 1)
 #include "nrf/src/uart.c"
 #endif
@@ -95,7 +94,9 @@ uint8_t bano_timer_handler(void)
 
 uint8_t bano_pcint_handler(void)
 {
-  if (reed_is_high())
+  const uint8_t x = reed_is_high();
+
+  if (x)
   {
     led_set_high();
 
@@ -110,6 +111,8 @@ uint8_t bano_pcint_handler(void)
   {
     led_set_low();
   }
+
+  bano_send_set(0x2a, x);
 
   return 0;
 }
