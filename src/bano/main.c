@@ -19,6 +19,10 @@
 
 /* led, portb[1] */
 
+#define CONFIG_LED 0
+
+#if (CONFIG_LED == 1)
+
 static void led_setup(void)
 {
 #define LED_DDR DDRB
@@ -37,6 +41,8 @@ static void led_set_low(void)
 {
   LED_PORT &= ~LED_MASK;
 }
+
+#endif /* CONFIG_LED */
 
 
 /* reed sensor, pind[3], pcint19 */
@@ -96,9 +102,12 @@ uint8_t bano_pcint_handler(void)
 {
   const uint8_t x = reed_is_high();
 
+#if ((CONFIG_LED == 1) || (CONFIG_UART == 1))
   if (x)
   {
+#if (CONFIG_LED == 1)
     led_set_high();
+#endif
 
 #if (CONFIG_UART == 1)
     static uint8_t i = 0;
@@ -109,8 +118,11 @@ uint8_t bano_pcint_handler(void)
   }
   else
   {
+#if (CONFIG_LED == 1)
     led_set_low();
+#endif
   }
+#endif
 
   bano_send_set(0x2a, x);
 
@@ -124,7 +136,9 @@ int main(void)
 {
   bano_info_t info = bano_info_default;
 
+#if (CONFIG_LED == 1)
   led_setup();
+#endif
 
 #if (CONFIG_UART == 1)
   uart_setup();
