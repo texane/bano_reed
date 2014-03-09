@@ -1,6 +1,15 @@
 [ fixes ]
 
-add a capacitor to provide enough current when the wireless chipset is transmiting
+when transmitting a message using +10db, current drawn
+increases up to 20mA and stay constant. no more messages
+are transmit. this behavior does not appear when using
+the USB FTDI power supply. I guess this is due to the
+current drawn being too large for the coil (cf. specs).
+To solve the issue, I added 2 capacitors (100nF, 33uF)
+to provide enough current when the wireless chipset is
+transmiting. also, using -10db works fine, but limits
+the range.
+
 use vertical coin holder to ease coin changing
 
 
