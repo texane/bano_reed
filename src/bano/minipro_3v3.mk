@@ -64,7 +64,7 @@ CC	     = avr-gcc
 # Override is only needed by avr-lib build system.
 
 REPO_DIR ?= $(HOME)/repo
-BANO_DIR := $(REPO_DIR)/odp
+BANO_DIR := $(REPO_DIR)
 NRF_DIR := $(REPO_DIR)
 
 override CFLAGS	= -g -Wall $(OPTIMIZE) -mmcu=$(MCU_TARGET) $(DEFS) -Wno-unused-function -I$(BANO_DIR) -I$(NRF_DIR)
