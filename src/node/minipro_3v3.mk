@@ -64,10 +64,16 @@ CC	     = avr-gcc
 # Override is only needed by avr-lib build system.
 
 REPO_DIR ?= $(HOME)/repo
-BANO_DIR := $(REPO_DIR)
-NRF_DIR := $(REPO_DIR)
 
-override CFLAGS	= -g -Wall $(OPTIMIZE) -mmcu=$(MCU_TARGET) $(DEFS) -Wno-unused-function -I$(BANO_DIR) -I$(NRF_DIR)
+BANO_DIR := $(REPO_DIR)
+BANO_CFLAGS := -I$(BANO_DIR)
+BANO_CFLAGS += -DBANO_CONFIG_NODE_ADDR=$(shell $(BANO_DIR)/bano/util/rand/a.out)
+BANO_CFLAGS += -DBANO_CONFIG_NODE_SEED=$(shell $(BANO_DIR)/bano/util/rand/a.out)
+
+NRF_DIR := $(REPO_DIR)/nrf
+NRF_CFLAGS := -I$(NRF_DIR)
+
+override CFLAGS	= -g -Wall $(OPTIMIZE) -mmcu=$(MCU_TARGET) $(DEFS) -Wno-unused-function $(BANO_CFLAGS) $(NRF_CFLAGS)
 override LDFLAGS       = -Wl,-Map,$(PRG).map
 
 OBJCOPY	= avr-objcopy
