@@ -4,9 +4,7 @@
 
 /* bano */
 
-#include "bano/src/common/bano_common.h"
 #include "bano/src/node/bano_node.h"
-#include "bano/src/node/bano_node.c"
 
 
 /* uart */
