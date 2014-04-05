@@ -1,0 +1,1 @@
+include $(BANO_DIR)/src/node/minipro_3v3.mk
