@@ -150,11 +150,9 @@ int main(void)
 #if (CONFIG_UART == 1)
   info.disable_mask &= ~BANO_DISABLE_USART;
 #endif
-  info.nodl_id = 0xdeadbeef;
+
   bano_init(&info);
-
   bano_loop();
-
   bano_fini();
 
   return 0;
