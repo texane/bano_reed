@@ -82,21 +82,19 @@ static uint8_t reed_is_high(void)
 
 uint8_t bano_get_handler(uint16_t key, uint32_t* val)
 {
-  /* return -1 if not handled */
-  return (uint8_t)-1;
+  return BANO_FLAG_ERR;
 }
 
 uint8_t bano_set_handler(uint16_t key, uint32_t val)
 {
-  return (uint8_t)-1;
+  return BANO_FLAG_ERR;
 }
 
-uint8_t bano_timer_handler(void)
+void bano_timer_handler(void)
 {
-  return (uint8_t)-1;
 }
 
-uint8_t bano_pcint_handler(void)
+void bano_pcint_handler(void)
 {
   const uint8_t x = reed_is_high();
 
@@ -123,8 +121,6 @@ uint8_t bano_pcint_handler(void)
 #endif
 
   bano_send_set(0x2a, x);
-
-  return 0;
 }
 
 
