@@ -82,12 +82,12 @@ static uint8_t reed_is_high(void)
 
 uint8_t bano_get_handler(uint16_t key, uint32_t* val)
 {
-  return BANO_FLAG_ERR;
+  return BANO_MSG_FLAG_ERR;
 }
 
 uint8_t bano_set_handler(uint16_t key, uint32_t val)
 {
-  return BANO_FLAG_ERR;
+  return BANO_MSG_FLAG_ERR;
 }
 
 void bano_timer_handler(void)
