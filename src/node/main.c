@@ -118,9 +118,10 @@ void bano_pcint_handler(void)
     led_set_low();
 #endif
   }
-#endif
+#endif /* led or uart */
 
-  bano_send_set(0x2a, x);
+  /* send only if transition from low to high */
+  if (x) bano_send_set(0x2a, 0x00000001);
 }
 
 
