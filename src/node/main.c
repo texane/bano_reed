@@ -145,7 +145,7 @@ static uint16_t get_vcc(void)
 
   /* convert */
   sum = 0;
-  for (i = 0; i != 4; ++i)
+  for (i = 0; i != 8; ++i)
   {
     ADCSRA |= _BV(ADSC); 
     while (bit_is_set(ADCSRA, ADSC)) ;
@@ -159,7 +159,7 @@ static uint16_t get_vcc(void)
   ADCSRA &= ~_BV(ADEN);
 
   /* back calculate AVcc in mV */
-  return (4UL * 1126400UL) / (uint32_t)sum;
+  return (8UL * 1126400UL) / (uint32_t)sum;
 }
 
 
