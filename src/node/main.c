@@ -121,7 +121,44 @@ void bano_pcint_handler(void)
 #endif /* led or uart */
 
   /* send only if transition from low to high */
-  if (x) bano_send_set(0x2a, 0x00000001);
+  if (x) bano_send_set(0x002a, 0x00000001);
+}
+
+
+/* read vcc */
+
+static uint16_t get_vcc(void)
+{
+  /* http://code.google.com/p/tinkerit/wiki/SecretVoltmeter */
+
+  uint8_t i;
+  uint16_t x;
+  uint16_t sum;
+
+  /* read 1.1V reference against AVcc */
+  ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
+
+  ADCSRA |= _BV(ADEN);
+
+  _delay_ms(5);
+
+  /* convert */
+  sum = 0;
+  for (i = 0; i != 4; ++i)
+  {
+    ADCSRA |= _BV(ADSC); 
+    while (bit_is_set(ADCSRA, ADSC)) ;
+    x = ADCL;
+    __asm__ __volatile__ ("nop");
+    x |= ((uint16_t)ADCH) << 8;
+    x &= 0x3ff;
+    sum += x;
+  }
+
+  ADCSRA &= ~_BV(ADEN);
+
+  /* back calculate AVcc in mV */
+  return (4UL * 1126400UL) / (uint32_t)sum;
 }
 
 
@@ -130,6 +167,10 @@ void bano_pcint_handler(void)
 int main(void)
 {
   bano_info_t info = bano_info_default;
+  uint16_t vcc;
+
+  /* get vcc before initializing bano */
+  vcc = get_vcc();
 
 #if (CONFIG_LED == 1)
   led_setup();
@@ -149,6 +190,9 @@ int main(void)
 #endif
 
   bano_init(&info);
+
+  bano_send_set(0x002b, (uint32_t)vcc);
+
   bano_loop();
   bano_fini();
 
