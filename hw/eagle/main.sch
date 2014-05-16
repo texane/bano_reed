@@ -7090,6 +7090,52 @@ type RDH, grid 15 mm</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="frames">
+<description>&lt;b&gt;Frames for Sheet and Layout&lt;/b&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="A4L-LOC">
+<wire x1="256.54" y1="3.81" x2="256.54" y2="8.89" width="0.1016" layer="94"/>
+<wire x1="256.54" y1="8.89" x2="256.54" y2="13.97" width="0.1016" layer="94"/>
+<wire x1="256.54" y1="13.97" x2="256.54" y2="19.05" width="0.1016" layer="94"/>
+<wire x1="256.54" y1="19.05" x2="256.54" y2="24.13" width="0.1016" layer="94"/>
+<wire x1="161.29" y1="3.81" x2="161.29" y2="24.13" width="0.1016" layer="94"/>
+<wire x1="161.29" y1="24.13" x2="215.265" y2="24.13" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="24.13" x2="256.54" y2="24.13" width="0.1016" layer="94"/>
+<wire x1="246.38" y1="3.81" x2="246.38" y2="8.89" width="0.1016" layer="94"/>
+<wire x1="246.38" y1="8.89" x2="256.54" y2="8.89" width="0.1016" layer="94"/>
+<wire x1="246.38" y1="8.89" x2="215.265" y2="8.89" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="8.89" x2="215.265" y2="3.81" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="8.89" x2="215.265" y2="13.97" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="13.97" x2="256.54" y2="13.97" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="13.97" x2="215.265" y2="19.05" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="19.05" x2="256.54" y2="19.05" width="0.1016" layer="94"/>
+<wire x1="215.265" y1="19.05" x2="215.265" y2="24.13" width="0.1016" layer="94"/>
+<text x="217.17" y="15.24" size="2.54" layer="94" font="vector">&gt;DRAWING_NAME</text>
+<text x="217.17" y="10.16" size="2.286" layer="94" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="230.505" y="5.08" size="2.54" layer="94" font="vector">&gt;SHEET</text>
+<text x="216.916" y="4.953" size="2.54" layer="94" font="vector">Sheet:</text>
+<frame x1="0" y1="0" x2="260.35" y2="179.07" columns="6" rows="4" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="A4L-LOC" prefix="FRAME" uservalue="yes">
+<description>&lt;b&gt;FRAME&lt;/b&gt;&lt;p&gt;
+DIN A4, landscape with location and doc. field</description>
+<gates>
+<gate name="G$1" symbol="A4L-LOC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -7110,23 +7156,44 @@ type RDH, grid 15 mm</description>
 <part name="CON_IO" library="con-lstb" deviceset="MA05-1" device=""/>
 <part name="CON_VCC_SWITCH" library="pinhead" deviceset="PINHD-1X2" device=""/>
 <part name="JMP_VCC_COIN_OR_ALT" library="con-lstb" deviceset="MA03-1" device=""/>
+<part name="CON_COIN_HOLDER" library="pinhead" deviceset="PINHD-1X2" device=""/>
+<part name="C2" library="rcl" deviceset="C-EU" device="C1206K" value="330u"/>
+<part name="FRAME1" library="frames" deviceset="A4L-LOC" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="7.62" y="147.32" size="1.778" layer="91">TODO: coin, connect to COIN_VCC</text>
+<text x="66.04" y="5.08" size="1.6764" layer="94" font="vector">bano_reed_v0000</text>
+<text x="66.04" y="0" size="1.6764" layer="94" font="vector">https://github.com/texane/bano_reed</text>
+<text x="66.04" y="-5.08" size="1.6764" layer="94" font="vector">texane@gmail.com</text>
 </plain>
 <instances>
 <instance part="PCB1" gate="G$1" x="30.48" y="58.42" rot="R270"/>
 <instance part="CON_NRF" gate="G$1" x="109.22" y="55.88"/>
-<instance part="C1" gate="G$1" x="15.24" y="139.7"/>
-<instance part="R1" gate="G$1" x="-27.94" y="109.22"/>
-<instance part="CON_REED" gate="G$1" x="-15.24" y="109.22"/>
+<instance part="C1" gate="G$1" x="38.1" y="111.76" rot="MR0"/>
+<instance part="R1" gate="G$1" x="-33.02" y="106.68" rot="MR0"/>
+<instance part="CON_REED" gate="G$1" x="-45.72" y="106.68" smashed="yes" rot="MR0">
+<attribute name="NAME" x="-34.29" y="112.395" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="-39.37" y="101.6" size="1.778" layer="96" rot="MR0"/>
+</instance>
 <instance part="CON_GND" gate="G$1" x="-45.72" y="40.64"/>
 <instance part="CON_VCC_EN" gate="G$1" x="-45.72" y="63.5"/>
 <instance part="CON_IO" gate="G$1" x="-45.72" y="86.36"/>
-<instance part="CON_VCC_SWITCH" gate="G$1" x="-15.24" y="124.46"/>
-<instance part="JMP_VCC_COIN_OR_ALT" gate="G$1" x="-45.72" y="142.24"/>
+<instance part="CON_VCC_SWITCH" gate="G$1" x="15.24" y="93.98" smashed="yes" rot="MR0">
+<attribute name="NAME" x="36.83" y="99.695" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="21.59" y="88.9" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="JMP_VCC_COIN_OR_ALT" gate="G$1" x="15.24" y="129.54"/>
+<instance part="CON_COIN_HOLDER" gate="G$1" x="15.24" y="111.76" smashed="yes" rot="MR0">
+<attribute name="NAME" x="36.83" y="117.475" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="21.59" y="106.68" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="C2" gate="G$1" x="30.48" y="111.76" rot="MR0"/>
+<instance part="FRAME1" gate="G$1" x="-99.06" y="-15.24" smashed="yes">
+<attribute name="DRAWING_NAME" x="118.11" y="0" size="2.54" layer="94" font="vector"/>
+<attribute name="LAST_DATE_TIME" x="118.11" y="-5.08" size="2.286" layer="94" font="vector"/>
+<attribute name="SHEET" x="131.445" y="-10.16" size="2.54" layer="94" font="vector"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -7197,8 +7264,8 @@ type RDH, grid 15 mm</description>
 </segment>
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="-33.02" y1="109.22" x2="-45.72" y2="109.22" width="0.1524" layer="91"/>
-<label x="-45.72" y="109.22" size="1.778" layer="95"/>
+<wire x1="-27.94" y1="106.68" x2="-15.24" y2="106.68" width="0.1524" layer="91"/>
+<label x="-15.24" y="106.68" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="CON_GND" gate="G$1" pin="5"/>
@@ -7220,6 +7287,18 @@ type RDH, grid 15 mm</description>
 <pinref part="CON_GND" gate="G$1" pin="1"/>
 <wire x1="-38.1" y1="35.56" x2="-20.32" y2="35.56" width="0.1524" layer="91"/>
 <label x="-35.56" y="35.56" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="CON_COIN_HOLDER" gate="G$1" pin="2"/>
+<wire x1="17.78" y1="111.76" x2="17.78" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="106.68" x2="30.48" y2="106.68" width="0.1524" layer="91"/>
+<label x="48.26" y="106.68" size="1.778" layer="95" rot="MR0"/>
+<pinref part="C1" gate="G$1" pin="2"/>
+<wire x1="30.48" y1="106.68" x2="38.1" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="106.68" x2="48.26" y2="106.68" width="0.1524" layer="91"/>
+<junction x="38.1" y="106.68"/>
+<pinref part="C2" gate="G$1" pin="2"/>
+<junction x="30.48" y="106.68"/>
 </segment>
 </net>
 <net name="NRF_MISO" class="0">
@@ -7322,11 +7401,11 @@ type RDH, grid 15 mm</description>
 <segment>
 <pinref part="CON_REED" gate="G$1" pin="2"/>
 <pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="-17.78" y1="109.22" x2="-22.86" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="-22.86" y1="109.22" x2="-22.86" y2="104.14" width="0.1524" layer="91"/>
-<junction x="-22.86" y="109.22"/>
-<wire x1="-22.86" y1="104.14" x2="-45.72" y2="104.14" width="0.1524" layer="91"/>
-<label x="-45.72" y="104.14" size="1.778" layer="95"/>
+<wire x1="-43.18" y1="106.68" x2="-38.1" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="-38.1" y1="106.68" x2="-38.1" y2="101.6" width="0.1524" layer="91"/>
+<junction x="-38.1" y="106.68"/>
+<wire x1="-38.1" y1="101.6" x2="-15.24" y2="101.6" width="0.1524" layer="91"/>
+<label x="-15.24" y="101.6" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="PCB1" gate="G$1" pin="3"/>
@@ -7385,20 +7464,20 @@ type RDH, grid 15 mm</description>
 <net name="POW_VCC" class="0">
 <segment>
 <pinref part="CON_VCC_SWITCH" gate="G$1" pin="1"/>
-<wire x1="-17.78" y1="127" x2="-45.72" y2="127" width="0.1524" layer="91"/>
-<label x="-45.72" y="127" size="1.778" layer="95"/>
+<wire x1="17.78" y1="96.52" x2="45.72" y2="96.52" width="0.1524" layer="91"/>
+<label x="45.72" y="96.52" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="JMP_VCC_COIN_OR_ALT" gate="G$1" pin="2"/>
-<wire x1="-38.1" y1="142.24" x2="-22.86" y2="142.24" width="0.1524" layer="91"/>
-<label x="-35.56" y="142.24" size="1.778" layer="95"/>
+<wire x1="22.86" y1="129.54" x2="38.1" y2="129.54" width="0.1524" layer="91"/>
+<label x="25.4" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="POW_VCC_EN" class="0">
 <segment>
 <pinref part="CON_VCC_SWITCH" gate="G$1" pin="2"/>
-<wire x1="-17.78" y1="124.46" x2="-45.72" y2="124.46" width="0.1524" layer="91"/>
-<label x="-45.72" y="124.46" size="1.778" layer="95"/>
+<wire x1="17.78" y1="93.98" x2="45.72" y2="93.98" width="0.1524" layer="91"/>
+<label x="45.72" y="93.98" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="CON_NRF" gate="G$1" pin="14"/>
@@ -7412,8 +7491,8 @@ type RDH, grid 15 mm</description>
 </segment>
 <segment>
 <pinref part="CON_REED" gate="G$1" pin="1"/>
-<wire x1="-17.78" y1="111.76" x2="-45.72" y2="111.76" width="0.1524" layer="91"/>
-<label x="-45.72" y="111.76" size="1.778" layer="95"/>
+<wire x1="-43.18" y1="109.22" x2="-15.24" y2="109.22" width="0.1524" layer="91"/>
+<label x="-15.24" y="109.22" size="1.778" layer="95" rot="MR0"/>
 </segment>
 <segment>
 <pinref part="CON_VCC_EN" gate="G$1" pin="1"/>
@@ -7450,15 +7529,26 @@ type RDH, grid 15 mm</description>
 <net name="COIN_VCC" class="0">
 <segment>
 <pinref part="JMP_VCC_COIN_OR_ALT" gate="G$1" pin="3"/>
-<wire x1="-38.1" y1="144.78" x2="-22.86" y2="144.78" width="0.1524" layer="91"/>
-<label x="-35.56" y="144.78" size="1.778" layer="95"/>
+<wire x1="22.86" y1="132.08" x2="38.1" y2="132.08" width="0.1524" layer="91"/>
+<label x="25.4" y="132.08" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="CON_COIN_HOLDER" gate="G$1" pin="1"/>
+<wire x1="17.78" y1="114.3" x2="30.48" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="30.48" y1="114.3" x2="38.1" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="114.3" x2="48.26" y2="114.3" width="0.1524" layer="91"/>
+<junction x="38.1" y="114.3"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<junction x="30.48" y="114.3"/>
+<label x="48.26" y="114.3" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="ALT_VCC" class="0">
 <segment>
 <pinref part="JMP_VCC_COIN_OR_ALT" gate="G$1" pin="1"/>
-<wire x1="-38.1" y1="139.7" x2="-22.86" y2="139.7" width="0.1524" layer="91"/>
-<label x="-35.56" y="139.7" size="1.778" layer="95"/>
+<wire x1="22.86" y1="127" x2="38.1" y2="127" width="0.1524" layer="91"/>
+<label x="25.4" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
