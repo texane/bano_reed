@@ -1,4 +1,11 @@
 coin holder footprint, right hole sizes
+ref is here: http://fr.farnell.com/keystone/1025-7/battery-holder-pcb/dp/1650668
+
 orient the coin holder so that cell easily removed
+
+presse etoupe
+http://fr.farnell.com/jsp/search/browse.jsp?N=2014+203156&Ntk=gensearch&Ntt=presse+etoupe&Ntx=mode+matchallpartial
+
 330u capacitors: use small leakage caps, check package
+
 clean silkscreen
