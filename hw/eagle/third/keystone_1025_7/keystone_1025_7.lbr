@@ -57,17 +57,21 @@
 <library>
 <packages>
 <package name="KEYSTONE_1025_7">
-<circle x="0" y="0" radius="15.4813" width="0.127" layer="21"/>
-<pad name="P$2" x="0" y="-13" drill="1.6" diameter="3.81" shape="square"/>
-<pad name="P$3" x="0" y="7.5" drill="1.6" diameter="3.81" shape="square"/>
+<circle x="0" y="0" radius="15.5" width="0.127" layer="21"/>
+<pad name="P$2" x="0" y="-14" drill="1.5" diameter="3.175" shape="square"/>
+<pad name="P$3" x="0" y="6.5" drill="1.5" diameter="3.175" shape="square"/>
+<circle x="0" y="0" radius="13.9" width="0.127" layer="21"/>
+<wire x1="-3" y1="-15" x2="-3" y2="-18" width="0.127" layer="21"/>
+<wire x1="-3" y1="-18" x2="3" y2="-18" width="0.127" layer="21"/>
+<wire x1="3" y1="-18" x2="3" y2="-15" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
 <symbol name="KEYSTONE_1025_7">
-<pin name="COIN_MINUS" x="-2.54" y="0" length="middle" direction="pwr" rot="R180"/>
-<pin name="COIN_PLUS" x="2.54" y="0" length="middle" direction="pwr"/>
-<wire x1="2.54" y1="5.08" x2="2.54" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<pin name="COIN_MINUS" x="-3.81" y="0" visible="pad" length="short" direction="pwr"/>
+<pin name="COIN_PLUS" x="3.81" y="0" visible="pad" length="short" direction="pwr" rot="R180"/>
+<wire x1="1.27" y1="5.08" x2="1.27" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="2.54" x2="-1.27" y2="-2.54" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -78,8 +82,8 @@
 <devices>
 <device name="" package="KEYSTONE_1025_7">
 <connects>
-<connect gate="G$1" pin="COIN_MINUS" pad="P$2"/>
-<connect gate="G$1" pin="COIN_PLUS" pad="P$3"/>
+<connect gate="G$1" pin="COIN_MINUS" pad="P$3"/>
+<connect gate="G$1" pin="COIN_PLUS" pad="P$2"/>
 </connects>
 <technologies>
 <technology name=""/>

@@ -1,9 +1,3 @@
-check that the battery holder fits below the PCB when put in the box
-
-coin holder footprint, right hole sizes
-ref is here: http://fr.farnell.com/keystone/1025-7/battery-holder-pcb/dp/1650668
-
 presse etoupe
 http://fr.farnell.com/jsp/search/browse.jsp?N=2014+203156&Ntk=gensearch&Ntt=presse+etoupe&Ntx=mode+matchallpartial
-
-colonettes, si requises
+-> wire diameter = 3.5mm
