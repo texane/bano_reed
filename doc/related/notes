@@ -1,0 +1,106 @@
+[ the making of a door monitor and related wireless node framework ]
+
+
+[ introduction ]
+
+It has been quite a long time since I wanted to install a system to monitor the
+states of my flat and my garage doors.
+
+Functionnaly, I wanted to monitor the state of my doors from a remote place.
+A typical situation is when I leave for hollidays, but it can also be useful
+from the work office. To do so, I would centralize the information on a server
+connected on the internet that I could query using a web browser. The server
+itself would be located in the appartement.
+
+The major issue I had is that the garage is located 7 floors from the appartment
+without any physical communication link available. Thus, an early choice was to
+convey messages wirelessly. The distance was a concern, as well as a the concrete
+layers separating the floors. So, the wireless technology must be chosen
+accordingly. Also, the garage has no power supply, thus the alarm must have its
+own power source. I wanted the alarm to stay active for several weeks without
+intervention. Thus, low power consumption was considered from the beginnings of
+the project to reduce the constraints related to a power source choice.
+
+These were the vague guidelines I started from.
+
+I had some free time to work on it recently. It resulted both in the door monitor
+itself and in a wireless node framework reusable for future projects. The
+following sections detail the framework objectives, features, design and 
+implementation. Also, the specific door monitoring application is used as an
+example.
+
+
+[ the BANO wireless node framwork ]
+
+BANO is a contraction of BAse NOde. A resourceful platform called the base
+exchanges information with a set of cheap wireless nodes for sensing of
+actuating purposes. The base is connected to the Internet, so that it can
+used to interact with the nodes remotely, using a web browser typically.
+
+lso, I wanted something
+
+[[ infrastructure topology ]]
+
+self contained framework that relies on opensource technologies as much as
+possible.
+
+
+[[ protocol ]]
+key value concept exchange
+security
+
+
+[[ node platform ]]
+wireless technology
+cheap
+
+
+[[ node programming model ]]
+
+A goal was to simplify the development of wireless nodes. Low level details such
+as messaging and power consumption are handled by the runtime, so the developper
+can focus on implementing the application core logic.
+
+To achieve this, the programming model is descriptive and event based: the
+developper initializes the runtime and gets called when an event of interest
+occurs (timer, pin state change, message reception ...). The API is kept simple
+and easily extended or ported to other platforms.
+
+/* exported by the runtime */
+uint8_t bano_init(const bano_info_t*);
+uint8_t bano_fini(void);
+uint8_t bano_send_set(uint16_t, uint32_t);
+uint8_t bano_wait_event(bano_msg_t*);
+uint8_t bano_loop(void);
+
+/* implemented by the user */
+extern uint8_t bano_set_handler(uint16_t, uint32_t);
+extern uint8_t bano_get_handler(uint16_t, uint32_t*);
+extern void bano_timer_handler(void);
+extern void bano_pcint_handler(void);
+
+reduce the application code size
+and let
+
+descriptive programming interface
+
+
+[[ power consumption ]]
+
+
+[[ base architecture ]]
+
+linux, bbb, lfs, libsnrf / mongoose / webcam(optionnal)
+TODO: dongle
+
+
+[ the door monitor application ]
+
+repository
+use reed switch
+low power consumption: < 300uA typical
+
+
+[ future ]
+
+solar powered node for external monitoring
