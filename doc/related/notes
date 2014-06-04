@@ -33,9 +33,9 @@ example.
 [ the BANO wireless node framwork ]
 
 BANO is a contraction of BAse NOde. A resourceful platform called the base
-exchanges information with a set of cheap wireless nodes for sensing of
+exchanges information with a set of cheap wireless nodes for sensing or
 actuating purposes. The base is connected to the Internet, so that it can
-used to interact with the nodes remotely, using a web browser typically.
+be used to interact with the nodes remotely, using a web browser typically.
 
 lso, I wanted something
 
