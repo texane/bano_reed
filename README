@@ -1,0 +1,5 @@
+Door wireless alarm based on a reed switch. It uses the BANO
+framework for connectivity. More information on BANO can be
+found here:
+https://github.com/texane/bano
+
